@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>円形脱毛症 10問クイズ</title>
+<style>
+:root{color-scheme:light;--navy:#182e36;--teal:#14665e;--muted:#4d6769;--line:#d8e4e0;--paper:#f3f7f5;--white:#fff;--mint:#e1f1ea;--red:#973f34}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--navy);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;line-height:1.7}
+button,a{-webkit-tap-highlight-color:transparent}
+a{color:var(--teal);text-underline-offset:.25em}
+button{font:inherit;font-weight:700;border:1px solid transparent;border-radius:10px;padding:.7rem 1.15rem;cursor:pointer;color:var(--white);background:var(--teal)}
+button:hover:not(:disabled){background:#0e514b}
+button:disabled{opacity:.45;cursor:default}
+:focus-visible{outline:3px solid #287c9e;outline-offset:4px}
+.secondary{background:var(--white);border-color:var(--line);color:var(--teal)}
+.secondary:hover:not(:disabled){background:var(--mint)}
+header{border-bottom:1px solid var(--line);background:var(--white)}
+.header,main,footer{max-width:850px;margin:auto;padding-inline:24px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:750}
+.mark{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;color:var(--white);background:var(--teal);font-size:.78rem;letter-spacing:.04em}
+.header a{font-size:.82rem;white-space:nowrap}
+main{padding-block:38px 20px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:clamp(20px,5vw,42px);box-shadow:0 14px 38px #143d3310}
+.hero{background:linear-gradient(130deg,#133c3a,#1b544c);color:var(--white);border:0;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;pointer-events:none;right:-90px;top:-158px;width:380px;aspect-ratio:1;border:1px solid #ffffff35;border-radius:50%;box-shadow:0 0 0 30px #ffffff0d,0 0 0 60px #ffffff0a,0 0 0 90px #ffffff08}
+.hero>*{position:relative;z-index:1}
+.eyebrow{font-size:.8rem;font-weight:750;color:var(--teal);margin:0 0 8px}
+.hero .eyebrow{color:#b7e1d1}
+h1,h2,p{margin-block:0}
+h1{font-size:clamp(1.8rem,5.8vw,3rem);letter-spacing:-.03em;line-height:1.35;margin-bottom:14px}
+.hero .lead{color:#e3f4ee;max-width:33rem}
+.hero button{margin-top:24px;background:#dff2e9;color:#174942}
+.hero button:hover{background:#f1fbf7}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 0;padding:0;list-style:none}
+.rules li{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px 16px;color:var(--muted);font-size:.84rem}
+.rules strong{display:block;color:var(--navy);font-size:1.05rem}
+footer{color:var(--muted);font-size:.8rem;padding-block:0 26px}
+.progress-info,.actions,.review-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.progress-info{font-size:.88rem;color:var(--muted)}
+.progress-info strong{color:var(--teal);font-size:1rem}
+progress{display:block;width:100%;height:8px;margin:12px 0 22px;appearance:none;border:0;border-radius:99px;background:var(--mint);overflow:hidden;accent-color:var(--teal)}
+progress::-webkit-progress-bar{background:var(--mint)}
+progress::-webkit-progress-value{background:var(--teal)}
+progress::-moz-progress-bar{background:var(--teal)}
+fieldset{border:0;padding:0;margin:0;min-width:0}
+legend{font-size:clamp(1.1rem,3.4vw,1.45rem);font-weight:750;line-height:1.55;padding:0;margin-bottom:16px}
+.choice{display:flex;align-items:center;gap:12px;min-height:50px;padding:8px 14px;border-radius:12px;border:1px solid var(--line);margin-bottom:8px;cursor:pointer}
+.choice:hover{background:#f3f9f6}
+.choice:has(:checked){border-color:var(--teal);background:#eaf5ef}
+.choice input{width:17px;height:17px;flex:none;margin:0;accent-color:var(--teal)}
+.letter{font-size:.8rem;font-weight:750;color:var(--teal)}
+.actions{margin-top:15px}
+.score{font-size:clamp(3rem,9vw,5rem);color:var(--teal);font-weight:780;line-height:1;letter-spacing:-.045em;margin:12px 0}
+.score span{font-size:.5em;margin-left:.12em}
+.result-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.review-heading{margin:24px 0 12px}
+.review-heading h2{font-size:1.3rem}
+details{border:1px solid var(--line);border-radius:12px;background:var(--white);padding:12px 16px;margin-bottom:8px}
+summary{cursor:pointer;font-weight:700}
+.detail-body{padding-top:10px}
+.detail-body p+p{margin-top:6px}
+.verdict{display:inline-block;margin-right:.55em;color:var(--teal);font-size:.8rem}
+.incorrect{color:var(--red)}
+.source{font-size:.83rem;color:var(--muted);display:inline-block;margin-top:8px}
+@media(max-width:520px){.header,main,footer{padding-inline:14px}.header{min-height:58px}.brand{gap:7px;font-size:.89rem}.header a{font-size:.73rem}main{padding-block:19px 15px}.rules{gap:6px}.rules li{padding:9px;font-size:.72rem}.rules strong{font-size:.88rem}.card{border-radius:17px}.choice{padding:8px 10px;gap:8px}}
+</style>
+</head>
+<body>
+<header><div class="header">
+<div class="brand"><span class="mark" aria-hidden="true">AA</span>円形脱毛症 10問クイズ</div>
+<a href="../guideline.pdf" target="_blank" rel="noopener">出典PDFを開く ↗</a>
+</div></header>
+<main id="app"></main>
+<footer>出典　日本皮膚科学会『円形脱毛症診療ガイドライン 2024』</footer>
+
+<template id="home">
+<section class="card hero" aria-labelledby="intro-title">
+<p class="eyebrow">診療ガイドライン 2024</p>
+<h1 id="intro-title" tabindex="-1">円形脱毛症<br>10問クイズ</h1>
+<p class="lead">病態・疫学、診断・重症度、治療と生活支援。100問からランダムに10問を出題します。</p>
+<button id="start">クイズを始める →</button>
+</section>
+<ul class="rules" aria-label="クイズの形式">
+<li><strong>10問出題</strong>同じ回での重複なし</li>
+<li><strong>5択・単一回答</strong>採点前に見直し可能</li>
+<li><strong>解説つき</strong>正答と出典を確認</li>
+</ul>
+</template>
+
+<script id="question-bank" type="application/json">
+[
+{"id": 1, "pages": "1", "prompt": "典型的な円形脱毛症（AA）の脱毛斑はどれか。", "options": ["境界明瞭な円形〜類円形の非瘢痕性脱毛斑", "毛孔を失った線状の瘢痕性脱毛斑", "生来みられる三角形の脱毛斑", "前頭部から徐々に進む毛髪の細径化", "頭皮全体を覆う厚い痂皮を伴う脱毛"], "correct": 0, "explanation": "典型像は後天性の非瘢痕性脱毛で、円形〜類円形の脱毛斑を呈します。"},
+{"id": 2, "pages": "5", "prompt": "AAで自己免疫反応の主な標的となるのはどれか。", "options": ["成長期の毛包", "休止期の毛包", "皮脂腺の導管", "エクリン汗腺", "立毛筋"], "correct": 0, "explanation": "成長期の毛包組織が主な標的と考えられています。"},
+{"id": 3, "pages": "5", "prompt": "AAの発症に関する説明で適切なのはどれか。", "options": ["遺伝的素因と環境因子の関与が想定され、明らかな誘因がない例も多い", "精神的ストレスは全例に共通する必須の誘因である", "単一遺伝子の変異で全例を説明できる", "頭皮への機械的圧迫が共通の発症機序である", "発症にはアトピー性皮膚炎の合併が必須である"], "correct": 0, "explanation": "遺伝的素因に環境因子が加わるモデルが想定されています。誘因を特定できない例もあります。"},
+{"id": 4, "pages": "5", "prompt": "病変部の活性化CD8陽性・NKG2D陽性T細胞が分泌するとされるサイトカインはどれか。", "options": ["IFN-γ", "IL-4", "IL-5", "IL-10", "IL-17A"], "correct": 0, "explanation": "ガイドラインに示された病態モデルでは、この細胞傷害性T細胞がIFN-γを分泌します。"},
+{"id": 5, "pages": "6", "prompt": "IFN-γの刺激を受けた毛包上皮細胞が分泌し、細胞傷害性T細胞をさらに活性化させるとされるサイトカインはどれか。", "options": ["IL-15", "IL-1β", "IL-4", "IL-13", "IL-33"], "correct": 0, "explanation": "毛包上皮のIL-15が細胞傷害性T細胞をさらに活性化し、正のフィードバックを形成すると考えられています。"},
+{"id": 6, "pages": "6", "prompt": "成長期毛包の自己抗原に対する免疫反応を説明する概念はどれか。", "options": ["毛包の免疫寛容の破綻", "末梢神経の脱髄", "皮脂腺の過形成", "毛幹の外因性熱損傷", "汗管の閉塞"], "correct": 0, "explanation": "成長期毛包の免疫寛容が破綻し、毛包由来の自己抗原への反応が生じると考えられています。"},
+{"id": 7, "pages": "6", "prompt": "提示PDFが引用する日本のレセプトデータ研究で、2019年のAA有病率はどれか。", "options": ["0.27％", "0.027％", "0.77％", "2.7％", "27％"], "correct": 0, "explanation": "同研究では2012年に0.16％、2019年に0.27％と報告されました。"},
+{"id": 8, "pages": "6", "prompt": "有病率の推定値を比較するとき、提示PDFが注意を促している点はどれか。", "options": ["Web調査では調査方法の影響により有病率を過大に推定しうる", "受診歴を問わないWeb調査では過大推定は起こりえない", "レセプト研究とWeb調査は必ず同じ集団を捉える", "一つの推定値を全ての国と年にそのまま適用できる", "有病率と新規発症率は同じ指標である"], "correct": 0, "explanation": "受診歴のない人も含めた国内Web調査について、調査方法による過大推定の可能性が指摘されています。"},
+{"id": 9, "pages": "6", "prompt": "提示PDFが引用する米国ミネソタ州の1975〜1989年の研究で、推定された生涯発症リスクはどれか。", "options": ["1.7％", "0.17％", "4.7％", "17％", "47％"], "correct": 0, "explanation": "オルムステッド郡の後ろ向き調査では、生涯発症リスクは1.7％と推定されました。"},
+{"id": 10, "pages": "7", "prompt": "ガイドラインの遺伝的要因の節で、AAの疾患感受性候補として挙げられるのはどれか。", "options": ["HLA-DQB1*03", "CFTR ΔF508", "HBB Glu6Val", "JAK2 V617F", "BRAF V600E"], "correct": 0, "explanation": "患者集団などの相関解析で、HLA-DQB1*03アリルが候補の一つに挙げられています。"},
+{"id": 11, "pages": "7", "prompt": "一卵性双生児におけるAAの一致率として引用されている値はどれか。", "options": ["55％", "5％", "15％", "25％", "100％"], "correct": 0, "explanation": "引用研究での一致率は55％でした。"},
+{"id": 12, "pages": "7", "prompt": "AAに合併しうる自己免疫性甲状腺疾患として挙げられているのはどれか。", "options": ["橋本病", "亜急性甲状腺炎", "甲状腺乳頭癌", "甲状腺濾胞腺腫", "単純性甲状腺腫"], "correct": 0, "explanation": "橋本病に代表される甲状腺疾患の合併が記載されています。"},
+{"id": 13, "pages": "7", "prompt": "アトピー素因とAAについて、ガイドラインに記載されているのはどれか。", "options": ["フィラグリン遺伝子異常を持つアトピー性皮膚炎患者では重篤なAAを合併する傾向が報告された", "アトピー素因があるとAAは単発型に限られる", "アトピー素因の有無は遺伝子検査なしに判断できない", "アトピー性皮膚炎があるとAAは必発である", "AA患者にはアトピー性疾患が合併しない"], "correct": 0, "explanation": "フィラグリン遺伝子異常を持つアトピー性皮膚炎患者における、重篤なAAの合併傾向が紹介されています。"},
+{"id": 14, "pages": "8", "prompt": "引用されたメタ解析で、多発型よりアトピー性皮膚炎の合併率が高かった病型はどれか。", "options": ["全頭型・汎発型", "単発型のみ", "多発型のみ", "急速進行型のみ", "AA incognitaのみ"], "correct": 0, "explanation": "メタ解析では、全頭型・汎発型で多発型より合併率が有意に高いと報告されました。"},
+{"id": 15, "pages": "8", "prompt": "AAの健康関連QoL（HRQoL）とSALTスコアの関係について適切なのはどれか。", "options": ["SALTスコアから個々の患者のHRQoLを推測するのは難しい", "SALTスコアだけで心理的負担を定量できる", "SALTスコアが低い患者ではHRQoLは低下しない", "HRQoLは頭部の脱毛面積と同じ指標である", "HRQoL評価は汎発型だけが対象となる"], "correct": 0, "explanation": "脱毛の程度にかかわらずHRQoLが低下しうるため、頭部の脱毛面積だけでは心理社会的負担を把握しにくいとされています。"},
+{"id": 16, "pages": "8", "prompt": "AA患者の生活への皮膚疾患の影響を尋ねる尺度として挙げられているのはどれか。", "options": ["DLQI", "SALT", "EASI", "PASI", "BSA"], "correct": 0, "explanation": "DLQIはDermatology Life Quality Indexの略で、皮膚疾患が生活に及ぼす影響の評価に用いられています。"},
+{"id": 17, "pages": "8", "prompt": "HADS-AとHADS-Dが評価するものの組み合わせはどれか。", "options": ["不安とうつ", "瘙痒と疼痛", "頭髪と体毛の脱毛範囲", "就労時間と医療費", "脱毛の面積と進行速度"], "correct": 0, "explanation": "HADSのAは不安、Dはうつを評価する下位尺度です。"},
+{"id": 18, "pages": "9", "prompt": "経済的負荷の節が引用する2021年の国内研究で、費用試算に含まれたものはどれか。", "options": ["処方薬、市販薬、ウィッグや仕事の生産性低下", "入院費のみ", "処方薬のみ", "通院交通費のみ", "ウィッグの購入費のみ"], "correct": 0, "explanation": "国内研究では処方薬、市販薬、ウィッグにかかる費用に加え、仕事の生産性損失も評価されています。"},
+{"id": 19, "pages": "9", "prompt": "単発型または数個程度の脱毛斑に対し、発症後1年以内に取りうる方針として記載されているのはどれか。", "options": ["経過観察", "全例への経口JAK阻害薬開始", "全例への頭皮生検", "全例への静注ステロイドパルス", "全例へのPUVA療法"], "correct": 0, "explanation": "単発型や少数の脱毛斑では、自然回復の可能性を考慮して経過観察のみとする選択肢があります。"},
+{"id": 20, "pages": "9", "prompt": "予後の節で回復率が低いとされている臨床型はどれか。", "options": ["蛇行型", "少数の限局性脱毛斑", "自然回復型のacute diffuse and total alopecia", "短軟毛の回復が確認された急速進行例", "単発型"], "correct": 0, "explanation": "蛇行型は回復率が低いと記載されています。"},
+{"id": 21, "pages": "9", "prompt": "アトピー性皮膚炎を合併したAAの予後について、ガイドラインはどう整理しているか。", "options": ["相反する報告があり結論は出ていない", "常に予後良好と結論づけている", "常に予後不良と結論づけている", "アトピー性皮膚炎の有無だけで予後が決まる", "併存疾患の研究は一件もない"], "correct": 0, "explanation": "合併例の予後については相反する報告があり、結論は出ていません。"},
+{"id": 22, "pages": "9", "prompt": "AAの活動期にみられることがある自覚症状はどれか。", "options": ["軽い瘙痒や刺激感", "激しい拍動性疼痛", "脱毛域の完全な知覚消失", "強い冷感のみ", "毛包周囲の灼熱痛が常に持続する"], "correct": 0, "explanation": "通常は自覚症状を欠きますが、活動期には軽い瘙痒や刺激感を伴うことがあります。"},
+{"id": 23, "pages": "10", "prompt": "慢性の重症AAでみられる爪甲の所見はどれか。", "options": ["点状陥凹", "ばち指", "爪下線状出血が必発", "爪周囲の膿疱が必発", "後天性の爪の完全欠損が必発"], "correct": 0, "explanation": "慢性重症例では点状陥凹などの爪甲変形がみられ、発症や再燃に一致して横一列に並ぶこともあります。"},
+{"id": 24, "pages": "10", "prompt": "脱毛斑の毛孔が欠損している場合、鑑別上まず示唆される特徴はどれか。", "options": ["瘢痕性変化", "眉毛の同時脱毛", "精神的負担の程度", "身体全体の脱毛率", "一過性の易脱毛性"], "correct": 0, "explanation": "毛孔の欠損は瘢痕の手がかりで、通常は非瘢痕性であるAAとの鑑別に役立ちます。"},
+{"id": 25, "pages": "10", "prompt": "AAの臨床病型を分類する主な情報はどれか。", "options": ["脱毛斑の数、範囲、形態", "毛髪の色と太さのみ", "罹患年齢と性別のみ", "血清IgE値のみ", "爪の形状のみ"], "correct": 0, "explanation": "脱毛斑の数・範囲・形態をもとに、単発型、多発型、全頭型などに分類します。"},
+{"id": 26, "pages": "10", "prompt": "頭髪が全て脱落し、眉毛や体毛にも脱毛が広がった病型はどれか。", "options": ["汎発型", "単発型", "多発型", "全頭型", "蛇行型"], "correct": 0, "explanation": "汎発型は頭部全体に加え、全身に脱毛が拡大する病型です。"},
+{"id": 27, "pages": "10", "prompt": "側頭部から後頭部にかけて帯状に脱毛する病型はどれか。", "options": ["蛇行型", "逆蛇行型", "単発型", "全頭型", "汎発型"], "correct": 0, "explanation": "蛇行型（ophiasis）では側頭部・後頭部の辺縁に沿う帯状の脱毛がみられます。"},
+{"id": 28, "pages": "10", "prompt": "前頭部と頭頂部が帯状に脱毛し、側頭部と後頭部が保たれるパターンはどれか。", "options": ["逆蛇行型", "蛇行型", "全頭型", "汎発型", "頭皮全体の均一なびまん型"], "correct": 0, "explanation": "前頭部と頭頂部が侵される逆蛇行型は、蛇行型と反対の分布を示します。"},
+{"id": 29, "pages": "10", "prompt": "休止期脱毛が顕著な、びまん性の特殊病型はどれか。", "options": ["AA incognita", "ophiasis", "単発型", "全頭型", "汎発型"], "correct": 0, "explanation": "AA incognitaはびまん性に脱毛し、休止期脱毛が顕著となる特殊病型です。"},
+{"id": 30, "pages": "10", "prompt": "急速進行型について適切なのはどれか。", "options": ["急速に回復する亜型があり、一部では自然回復もみられる", "急速に進行した例は全例が慢性化する", "頭部の広い範囲に進行することはない", "全頭型や汎発型への移行は起こらない", "急速進行型は休止期脱毛症の別名である"], "correct": 0, "explanation": "急速進行型の一部は全頭型・汎発型に移行しますが、急速に回復する亜型もあります。"},
+{"id": 31, "pages": "10", "prompt": "頭部の脱毛面積がちょうど25％のとき、S分類はどれか。", "options": ["S2", "S0", "S1", "S3", "S4"], "correct": 0, "explanation": "S1は25％未満、S2は25〜49％です。"},
+{"id": 32, "pages": "10", "prompt": "頭部の脱毛面積が74％のとき、S分類はどれか。", "options": ["S3", "S1", "S2", "S4", "S5"], "correct": 0, "explanation": "S3は50〜74％です。S4は75〜99％です。"},
+{"id": 33, "pages": "10", "prompt": "頭部の脱毛が100％のとき、S分類はどれか。", "options": ["S5", "S1", "S2", "S3", "S4"], "correct": 0, "explanation": "S5は全頭の脱毛に相当します。"},
+{"id": 34, "pages": "10", "prompt": "頭部以外に部分的な脱毛を認める場合、B分類はどれか。", "options": ["B1", "B0", "B2", "S1", "S5"], "correct": 0, "explanation": "B1は頭部以外の部分的な脱毛を表します。S分類は頭部を評価します。"},
+{"id": 35, "pages": "11", "prompt": "提示PDFのS分類を用いた重症症例の基準はどれか。", "options": ["B分類にかかわらずS2以上", "B2であることが必須", "B1以上かつS1以上", "B0かつS5のみ", "B分類にかかわらずS4以上"], "correct": 0, "explanation": "ガイドラインは、B分類にかかわらずS2以上を重症症例としています。"},
+{"id": 36, "pages": "11", "prompt": "SALTスコアで頭頂部の脱毛割合にかける重みはどれか。", "options": ["0.40", "0.18", "0.24", "0.50", "1.00"], "correct": 0, "explanation": "頭頂部の重みは40％、左右側頭部は各18％、後頭部は24％です。"},
+{"id": 37, "pages": "11", "prompt": "後頭部の半分に脱毛があり、他の頭皮部位に脱毛がない場合のSALTスコアはどれか。", "options": ["12", "9", "18", "24", "50"], "correct": 0, "explanation": "後頭部の重みは0.24です。後頭部の脱毛割合50％に0.24をかけると12になります。"},
+{"id": 38, "pages": "11", "prompt": "頭頂部の半分と右側頭部全体に脱毛があり、他の部位にはない場合のSALTスコアはどれか。", "options": ["38", "20", "28", "44", "58"], "correct": 0, "explanation": "頭頂部は50×0.40＝20、右側頭部は100×0.18＝18で、合計38です。"},
+{"id": 39, "pages": "11", "prompt": "ガイドラインが紹介するJAK阻害薬などの全身投与薬の臨床試験では、どのSALT値以上が重症の基準に用いられたか。", "options": ["50", "20", "25", "75", "90"], "correct": 0, "explanation": "試験ではSALT 50以上が重症の基準として使われています。"},
+{"id": 40, "pages": "11", "prompt": "頭部の脱毛面積が15％で、眉毛に明らかな脱毛がある。記載されたAlopecia Areata Scaleでの重症度はどれか。", "options": ["中等症", "軽症", "重症", "最重症", "判定不能"], "correct": 0, "explanation": "面積のみでは軽症ですが、眉毛の明らかな脱毛があるため一段階上げて中等症となります。"},
+{"id": 41, "pages": "11", "prompt": "Alopecia Areata Scaleで軽症・中等症を一段階引き上げる項目はどれか。", "options": ["6カ月間の治療に対する不十分な効果", "家族歴のみ", "単発の脱毛斑のみ", "血清IgE高値のみ", "罹患期間が6カ月であることのみ"], "correct": 0, "explanation": "6カ月間の治療で効果が不十分なことは、重症度を一段階引き上げる4項目の一つです。"},
+{"id": 42, "pages": "11", "prompt": "ヘアプルテストが直接評価するものはどれか。", "options": ["易脱毛性", "毛孔の欠損面積", "毛包周囲のリンパ球数", "頭髪の平均成長速度", "患者の心理的負担"], "correct": 0, "explanation": "優しく毛髪を牽引し、抜けやすさを評価します。"},
+{"id": 43, "pages": "11", "prompt": "記載されたgentle hair pull testでは、牽引した毛の何％以上が抜けると陽性か。", "options": ["10％", "2％", "5％", "25％", "50％"], "correct": 0, "explanation": "ガイドラインでは、牽引した毛の10％以上が抜けた場合を陽性としています。"},
+{"id": 44, "pages": "11", "prompt": "ヘアプルテストが陰性でもAAの除外につながらない理由はどれか。", "options": ["慢性期には病変部と周辺でも陰性となることがある", "AAは全ての病期で必ず陰性となる", "AAでは病変部以外でしか陽性にならない", "この検査では毛幹を顕微鏡で観察する", "陽性は成長期毛包への免疫寛容を示す"], "correct": 0, "explanation": "慢性期のAAでは、病変部やその周辺でも陰性になることがあります。"},
+{"id": 45, "pages": "11-12", "prompt": "トリコスコピーとはどのような検査か。", "options": ["頭皮と頭髪を対象としたダーモスコピー", "牽引した毛を数える検査", "皮膚深部の超音波断層検査", "血中自己抗体の測定", "爪甲を対象とした蛍光抗体検査"], "correct": 0, "explanation": "頭皮と頭髪を拡大観察し、AAの診断や病勢評価に用います。"},
+{"id": 46, "pages": "12", "prompt": "黄色点がAA以外でもみられる疾患として本文が挙げているのはどれか。", "options": ["男性型脱毛症", "圧迫性脱毛症", "脂腺母斑", "毛孔性扁平苔癬", "膿瘍性穿掘性頭部毛包周囲炎"], "correct": 0, "explanation": "黄色点は男性型脱毛症でもみられ、単独でAAを確定できません。"},
+{"id": 47, "pages": "12", "prompt": "黒点や断裂毛がAA以外でもみられる組み合わせはどれか。", "options": ["頭部白癬とトリコチロマニア", "脂腺母斑と休止期脱毛症", "先天性三角形脱毛症と脂腺母斑", "牽引性脱毛症と腫瘍性脱毛症", "梅毒性脱毛と女性型脱毛症"], "correct": 0, "explanation": "黒点や断裂毛は頭部白癬とトリコチロマニアにもみられます。"},
+{"id": 48, "pages": "12", "prompt": "AAに比較的特異度が高いトリコスコピー所見はどれか。", "options": ["感嘆符毛", "黄色点のみ", "黒点のみ", "断裂毛のみ", "頭皮の鱗屑のみ"], "correct": 0, "explanation": "感嘆符毛や漸減毛などは、AAの診断の信頼性を高める所見とされています。"},
+{"id": 49, "pages": "12", "prompt": "小児AAに合併すると臨床像を複雑にしうる脱毛症はどれか。", "options": ["トリコチロマニア", "先天性三角形脱毛症", "腫瘍性脱毛症", "梅毒性脱毛", "女性型脱毛症"], "correct": 0, "explanation": "小児ではトリコチロマニアが合併しやすく、問診やヘアプルテストを含めた評価が重要です。"},
+{"id": 50, "pages": "12", "prompt": "組織像の「swarm of bees」は何を指すか。", "options": ["毛球部周囲の密な炎症細胞浸潤", "毛幹周囲の真菌胞子の配列", "表皮角層内の好中球集簇", "皮脂腺を取り囲む石灰沈着", "頭皮真皮内の出血巣"], "correct": 0, "explanation": "毛球部周囲に密に集まった炎症細胞を蜂の群れにたとえた表現です。"},
+{"id": 51, "pages": "12-13", "prompt": "頭皮生検が有用となる場面はどれか。", "options": ["臨床所見のみで他の脱毛症との鑑別が難しいとき", "典型的なAAの診断を全例で確認するとき", "SALTスコアを計算するとき", "QoLの低下の程度のみを測るとき", "脱毛のない全ての家族を調べるとき"], "correct": 0, "explanation": "臨床所見で鑑別が難しい場合や、毛包周囲の細胞浸潤から病勢を評価したい場合に生検が役立ちます。"},
+{"id": 52, "pages": "13", "prompt": "エリテマトーデスによる脱毛との鑑別の補助として記載されている検査はどれか。", "options": ["新鮮凍結切片を用いる蛍光抗体直接法", "毛髪の強制抜毛テストのみ", "HADS", "視診によるSALT測定", "頭皮の超音波計測のみ"], "correct": 0, "explanation": "Lupus band testに用いる蛍光抗体直接法が、鑑別の補助となります。"},
+{"id": 53, "pages": "13-14", "prompt": "AA-cubeが治療法の検討に用いる3軸はどれか。", "options": ["年齢・重症度・病期", "性別・職業・家族歴", "脱毛範囲・血圧・脈拍", "医療費・通院頻度・投与経路", "頭頂部・側頭部・後頭部"], "correct": 0, "explanation": "AA-cubeでは年齢、重症度、病期を立方体の3軸に置き、治療の選択肢を図示します。"},
+{"id": 54, "pages": "3", "prompt": "ガイドラインにおけるエビデンスレベルCの意味はどれか。", "options": ["とても低い", "高い", "低い", "中等度", "推奨しない"], "correct": 0, "explanation": "Cは「とても低い」で、結論を支持する質の高い研究がない場合に相当します。"},
+{"id": 55, "pages": "3", "prompt": "推奨度2の意味はどれか。", "options": ["弱い推奨", "強い推奨", "推奨しない", "エビデンスが高い", "エビデンスがとても低い"], "correct": 0, "explanation": "推奨度2は弱い推奨です。利益や安全性に不確実性がある場合などに付されます。"},
+{"id": 56, "pages": "3-4", "prompt": "エビデンスレベルと推奨の強さを別々に表記する意義はどれか。", "options": ["研究結果の確かさと、利益・負担や国内での実施事情を含む推奨判断を区別できる", "エビデンスCの治療を一律に推奨度3へ分類できる", "推奨度1の治療に保険適用があることを保証できる", "研究デザインを検討せずに推奨度を決められる", "推奨文が全ての患者の治療を一律に決定する"], "correct": 0, "explanation": "推奨にはエビデンスの確かさに加え、利益と負担のバランスや国内での実施事情などが考慮されます。"},
+{"id": 57, "pages": "14", "prompt": "CQ1でステロイド局所注射の主な対象となる症例はどれか。", "options": ["限局した単発型・多発型の成人", "全身の体毛が脱落した全ての小児", "脱毛のない成人", "初診時の全頭型全例", "感嘆符毛を認める小児全例"], "correct": 0, "explanation": "CQ1は、原則としてS1以下程度の限局した脱毛巣を持つ成人への局所注射を勧めています。"},
+{"id": 58, "pages": "14", "prompt": "ステロイド局所注射の注射部位で報告されている有害事象はどれか。", "options": ["皮膚萎縮", "毛孔性扁平苔癬", "頭部白癬", "先天性三角形脱毛症", "ばち指"], "correct": 0, "explanation": "局所の有害事象として皮膚萎縮、疼痛、出血が挙げられています。"},
+{"id": 59, "pages": "15-16", "prompt": "CQ2で局所免疫療法を検討できる状況はどれか。", "options": ["症状固定期のS2以上の多発型、全頭型、汎発型", "発症当日の軽い単発型のみ", "脱毛のない家族への発症予防", "急速に自然回復している症例への一律の治療", "頭部白癬を合併した患者への抗真菌治療の代替"], "correct": 0, "explanation": "CQ2は、症状固定期の広範な病型を対象に、年齢を問わず局所免疫療法を選択肢としています。"},
+{"id": 60, "pages": "15-16", "prompt": "局所免疫療法の試薬としてCQ2に挙げられている組み合わせはどれか。", "options": ["SADBEとDPCP", "PUVAとnarrow-band UVB", "バリシチニブとリトレシチニブ", "トリアムシノロンとクロベタゾール", "ラタノプロストとビマトプロスト"], "correct": 0, "explanation": "CQ2では、SADBEとDPCPを用いた局所免疫療法の報告が紹介されています。"},
+{"id": 61, "pages": "15-16", "prompt": "局所免疫療法の実施前に、ガイドラインが求める手続きはどれか。", "options": ["患者または保護者の同意と実施施設での承認", "施術者の判断のみ", "同意は治療終了後に得ればよい", "未成年の場合は施設承認のみ", "保険適用があるため承認手続きは省略する"], "correct": 0, "explanation": "局所免疫療法には保険適用がなく、患者または保護者の同意と施設での承認手続きを経て実施するとされています。"},
+{"id": 62, "pages": "17", "prompt": "CQ3のステロイド外用療法の推奨対象はどれか。", "options": ["単発型から融合傾向のない多発型", "体毛だけが脱落した例に限定", "全頭型だけに限定", "汎発型のみ", "トリコチロマニア単独例"], "correct": 0, "explanation": "CQ3では単発型から融合傾向のない多発型へのステロイド外用を勧めています。"},
+{"id": 63, "pages": "17", "prompt": "CQ3の推奨文が挙げる外用ステロイドの強さはどれか。", "options": ["strong、very strong、strongest", "weakのみ", "mediumのみ", "weakとmediumのみ", "strongestのみ"], "correct": 0, "explanation": "CQ3の推奨文にはstrongからstrongestまでの3クラスが記載されています。"},
+{"id": 64, "pages": "18", "prompt": "CQ4で経口ステロイドが検討されうるのはどれか。", "options": ["発症初期に急速進行するS2以上の成人で、標準治療に抵抗し自然治癒傾向がない", "自然に回復中の軽い単発型", "症状固定期の全例", "S1で初診の成人全例", "発症前の家族への予防投与"], "correct": 0, "explanation": "CQ4では、発症初期に急速進行するS2以上の成人で、外用や局注などに抵抗する例に限って検討します。"},
+{"id": 65, "pages": "18", "prompt": "CQ4で経口ステロイドを標準治療抵抗例に限って検討する理由の一つはどれか。", "options": ["休薬後の再発率が高い", "休薬すると全例で永続的に寛解する", "局所注射との区別がつかない", "自然回復の可能性が全例で否定されている", "脱毛症状を経時的に評価できない"], "correct": 0, "explanation": "休薬後に再発しやすいため、他の標準的な治療に抵抗する例に限って検討するとされています。"},
+{"id": 66, "pages": "19", "prompt": "CQ5で、点滴静注ステロイドパルス療法について記載されているのはどれか。", "options": ["小児には行わない方がよい", "小児が第一選択の対象である", "自然治癒が見込まれる例を優先する", "治療前の副作用説明を省略できる", "長期に症状が固定した症例のみが対象である"], "correct": 0, "explanation": "CQ5は小児には行わない方がよいとし、自然治癒の可能性が高い症例の除外や再発・副作用の説明を重視しています。"},
+{"id": 67, "pages": "19", "prompt": "CQ5の点滴静注ステロイドパルス療法の推奨度とエビデンスレベルはどれか。", "options": ["2・B", "1・A", "1・B", "2・C", "3・B"], "correct": 0, "explanation": "CQ5は弱い推奨（2）で、エビデンスレベルBです。"},
+{"id": 68, "pages": "21", "prompt": "広範囲で難治のAAに対する経口JAK阻害薬等の、CQ6での推奨度とエビデンスレベルはどれか。", "options": ["1・A", "1・C", "2・A", "2・B", "3・B"], "correct": 0, "explanation": "CQ6は推奨文にある3条件を全て満たす場合に限り、推奨度1、エビデンスレベルAです。"},
+{"id": 69, "pages": "21", "prompt": "バリシチニブの標的としてCQ6に示されているのはどれか。", "options": ["JAK1/2", "JAK3/TECファミリー", "IL-4/13受容体", "TNF-α", "IL-17A"], "correct": 0, "explanation": "バリシチニブはJAK1/2選択的阻害薬です。"},
+{"id": 70, "pages": "21", "prompt": "リトレシチニブの標的としてCQ6に示されているのはどれか。", "options": ["JAK3/TECファミリー", "JAK1/2", "IL-4/13受容体", "TNF-α", "IL-17A"], "correct": 0, "explanation": "リトレシチニブはJAK3/TECファミリーキナーゼ選択的阻害薬です。"},
+{"id": 71, "pages": "21", "prompt": "CQ6で紹介されるBRAVE-AA1・BRAVE-AA2試験の対象薬はどれか。", "options": ["バリシチニブ", "リトレシチニブ", "デュピルマブ", "セファランチン", "タクロリムス"], "correct": 0, "explanation": "BRAVE-AA1とBRAVE-AA2は、バリシチニブを評価した国際多施設ランダム化比較試験です。"},
+{"id": 72, "pages": "21", "prompt": "CQ6で紹介されるALLEGRO試験の対象薬はどれか。", "options": ["リトレシチニブ", "バリシチニブ", "カルプロニウム塩化物", "シクロスポリンA", "ビマトプロスト"], "correct": 0, "explanation": "ALLEGROはリトレシチニブを評価した国際多施設ランダム化比較試験です。"},
+{"id": 73, "pages": "21", "prompt": "BRAVE-AA2試験でCQ6が紹介する、36週時点での発毛効果の評価指標はどれか。", "options": ["SALTスコア20以下の達成割合", "SALTスコア50以上の達成割合", "S分類が1段階悪化した割合", "眉毛が完全回復した割合のみ", "DLQIが20以上となった割合"], "correct": 0, "explanation": "CQ6では36週後にSALTスコア20以下を達成した割合を示しています。"},
+{"id": 74, "pages": "21", "prompt": "CQ6で経口JAK阻害薬等を勧めるための施設側の条件はどれか。", "options": ["AAの診断・治療に熟練した医師が在籍し、薬剤を用いる治療環境が整っている", "処方箋さえ発行できればよい", "検査や副作用への対応体制は不要である", "外用薬の調剤設備のみがあればよい", "患者への意思決定支援を行わない施設に限る"], "correct": 0, "explanation": "CQ6は、専門性を備えた医師の在籍と、薬剤を用いた治療環境の整備を条件としています。"},
+{"id": 75, "pages": "21-22", "prompt": "CQ6における患者との治療的意思決定（TDM）の取り扱いはどれか。", "options": ["開始・継続・中止について患者と繰り返し共有する", "初回処方時に一度だけ説明して終える", "副作用が生じてから初めて患者と話す", "患者の希望にかかわらず適応があれば投与する", "中止に関する意思決定は医師だけが行う"], "correct": 0, "explanation": "CQ6では、開始・継続・中止の意思決定を患者と繰り返し共有できる状況を治療の条件としています。"},
+{"id": 76, "pages": "21", "prompt": "経口JAK阻害薬等の中止後について、CQ6に記載されているのはどれか。", "options": ["中止後に再発した例がある", "発毛後に中止すれば全例で完治する", "中止後の再発は否定されている", "発毛の有無にかかわらず中止時期は全員同じである", "中止後のみが有害事象の評価対象である"], "correct": 0, "explanation": "CQ6は、治療中止後に再発した症例があることを注意点として挙げています。"},
+{"id": 77, "pages": "22", "prompt": "CQ7で抗ヒスタミン薬の併用を検討できるのはどれか。", "options": ["アトピー性皮膚炎を合併するAA", "瘢痕性脱毛症と確定した例", "アトピー性皮膚炎の有無に関係なく全例", "発毛がみられない患者への単独第一選択", "AA患者の全ての家族への予防投与"], "correct": 0, "explanation": "CQ7では、アトピー性皮膚炎合併例にアトピー素因の改善効果を期待して併用してもよいとしています。"},
+{"id": 78, "pages": "23", "prompt": "CQ8におけるセファランチン内服の位置付けはどれか。", "options": ["単発型・多発型への併用療法の一つ", "全頭型に対する強い単独治療の推奨", "全例への再発予防", "汎発型の小児に限定した第一選択", "外用療法としてのみ評価されている"], "correct": 0, "explanation": "CQ8では単発型・多発型への併用を選択肢とし、推奨度2、エビデンスレベルCとしています。"},
+{"id": 79, "pages": "23", "prompt": "CQ9で取り上げられた内服配合錠の成分はどれか。", "options": ["グリチルリチン・グリシン・メチオニン", "グリチルリチン・チロシン・アルギニン", "メチオニン・ロイシン・バリン", "グリシン・リジン・セリン", "グリチルリチン・カルプロニウム・グリシン"], "correct": 0, "explanation": "CQ9では、グリチルリチン・グリシン・メチオニン配合錠を単発型や多発型の併用療法の一つとしています。"},
+{"id": 80, "pages": "24", "prompt": "CQ10でカルプロニウム塩化物外用はどう位置付けられているか。", "options": ["軽症の単発型・多発型への併用療法の一つ", "汎発型を高率に回復させる第一選択", "全頭型に対する唯一の治療", "経口JAK阻害薬等と同水準の強い推奨", "発症前から使用する予防療法"], "correct": 0, "explanation": "CQ10では、軽症の単発型や多発型への併用療法とし、重症例で整容的に満足できる発毛を裏付ける根拠は見いだされていません。"},
+{"id": 81, "pages": "24-25", "prompt": "CQ11とCQ12によるミノキシジルの評価はどれか。", "options": ["外用は併用療法として検討でき、内服は推奨しない", "外用・内服とも強い推奨", "内服を第一選択とし、外用は推奨しない", "外用・内服とも推奨度1・エビデンスA", "内服・外用とも汎発型のみに推奨する"], "correct": 0, "explanation": "外用はCQ11で推奨度2、内服はCQ12で推奨度3とされています。"},
+{"id": 82, "pages": "25", "prompt": "CQ12でミノキシジル内服を推奨しない理由はどれか。", "options": ["根拠不足、副作用への懸念、未承認薬であること", "十分な安全性と有効性が確立していること", "外用と内服の効果が同一と確定したこと", "国内でAAへの保険適用が確立したこと", "AAでの再発予防効果が確立したこと"], "correct": 0, "explanation": "CQ12では、十分なエビデンスがなく、副作用が懸念され、未承認であることを理由に推奨していません。"},
+{"id": 83, "pages": "26", "prompt": "CQ13における冷却療法の位置付けはどれか。", "options": ["通常型（単発型・多発型）への併用療法の一つ", "汎発型の強い推奨の単独療法", "全頭型の小児に限る必須療法", "疾患がなくても行う予防的治療", "全病型に対し推奨度3"], "correct": 0, "explanation": "CQ13は通常型AAへの併用を選択肢とし、推奨度2、エビデンスレベルBとしています。"},
+{"id": 84, "pages": "27", "prompt": "CQ14でPUVA療法を主に検討する対象はどれか。", "options": ["全頭型・汎発型の成人", "脱毛のない成人", "通常型の小児全例", "単発型の成人全例", "自然回復した成人への再発予防のみ"], "correct": 0, "explanation": "PUVA療法は主に全頭型や汎発型の成人例に検討される紫外線療法です。"},
+{"id": 85, "pages": "27", "prompt": "CQ14でエキシマライト／レーザーまたはnarrow-band UVBを主に検討する対象はどれか。", "options": ["通常型（単発型・多発型）の成人", "全身脱毛がある乳児", "汎発型の全例", "全頭型の成人だけ", "発毛後の再発予防を目的とする成人だけ"], "correct": 0, "explanation": "エキシマライト／レーザーやnarrow-band UVBは、主に通常型の成人に対する選択肢です。"},
+{"id": 86, "pages": "28", "prompt": "CQ15で直線偏光近赤外線照射療法が推奨されない理由はどれか。", "options": ["治療の有益性が実証されていないため", "PUVA療法と同じ紫外線を用いるため", "全ての比較試験で薬剤より優れていたため", "重症例のみに高い効果が確立したため", "小児への発症予防効果に対象が限られるため"], "correct": 0, "explanation": "CQ15では、直線偏光近赤外線照射療法の治療上の有益性は実証されていないとしています。"},
+{"id": 87, "pages": "28", "prompt": "CQ15のLED・低出力レーザー等に関する評価はどれか。", "options": ["報告間で治療効果の違いが大きく、推奨しない", "全ての報告で同じ治療効果があり強く推奨する", "CQ14のエキシマレーザーと同一の治療として扱う", "小児の単発型への第一選択とする", "経口JAK阻害薬等との併用を必須とする"], "correct": 0, "explanation": "発毛効果を示した報告はありますが、報告による効果の差が大きく、推奨しないとしています。"},
+{"id": 88, "pages": "29", "prompt": "CQ16でシクロスポリンA内服の推奨度とエビデンスレベルはどれか。", "options": ["3・B", "1・A", "1・C", "2・B", "3・C"], "correct": 0, "explanation": "CQ16は推奨度3、エビデンスレベルBです。"},
+{"id": 89, "pages": "30", "prompt": "CQ17でメトトレキサート内服が推奨されない国内事情はどれか。", "options": ["AAに対する保険未収載と使用経験の乏しさ", "国内のAA患者全員に効果が確立したこと", "海外で併用療法が禁止されていること", "円形脱毛症以外にも一切使われないこと", "円形脱毛症に対する第一選択として承認されたこと"], "correct": 0, "explanation": "海外の難治例で効果を示した報告はありますが、本邦での保険未収載や使用経験の少なさが考慮されています。"},
+{"id": 90, "pages": "30-31", "prompt": "CQ18でデュピルマブが標的とする受容体はどれか。", "options": ["IL-4/13受容体", "IL-5受容体", "IL-6受容体", "IL-17受容体", "IL-23受容体"], "correct": 0, "explanation": "デュピルマブはIL-4/13受容体を標的とする抗体です。CQ18ではAAに対する使用を推奨していません。"},
+{"id": 91, "pages": "31-32", "prompt": "CQ19で漢方薬内服の有用性を判断する際の問題はどれか。", "options": ["評価基準や再発の有無、自然治癒率を超える効果などが不明確", "大規模な比較試験で全病型への発毛効果が確立している", "検討された薬剤が全て同一の処方である", "自然回復の影響が完全に除外されている", "試験の主要評価項目が全て同一である"], "correct": 0, "explanation": "症例集積報告はありますが評価基準などが明確でなく、十分な根拠がないとして推奨していません。"},
+{"id": 92, "pages": "32", "prompt": "CQ20で、AAの脱毛に対する抗うつ薬・抗不安薬の位置付けはどれか。", "options": ["十分な根拠がなく推奨しない", "全てのAA患者に脱毛予防として推奨する", "単発型での第一選択とする", "DLQIの点数だけで発毛目的の処方を決める", "経口JAK阻害薬等との併用を必須とする"], "correct": 0, "explanation": "CQ20はAAへの有用性が十分に実証されていないとして、脱毛に対する使用を推奨していません。"},
+{"id": 93, "pages": "32", "prompt": "免疫抑制剤外用を扱うCQ21で検討された代表薬はどれか。", "options": ["タクロリムス", "ビマトプロスト", "セファランチン", "バリシチニブ", "デュピルマブ"], "correct": 0, "explanation": "CQ21はタクロリムス外用などの有効性を検討し、推奨度3、エビデンスレベルCとしています。"},
+{"id": 94, "pages": "33", "prompt": "CQ22で効果が検証されたプロスタグランジン製剤はどれか。", "options": ["ラタノプロストとビマトプロスト", "SADBEとDPCP", "シクロスポリンAとタクロリムス", "バリシチニブとリトレシチニブ", "カルプロニウム塩化物とミノキシジル"], "correct": 0, "explanation": "ラタノプロストとビマトプロストの眉毛や睫毛などに対する効果が検討されましたが、AAに対して推奨されていません。"},
+{"id": 95, "pages": "34", "prompt": "CQ23における催眠療法・心理療法の位置付けはどれか。", "options": ["発毛目的では推奨しないが、精神的葛藤やQoL低下への支援として実施を妨げない", "発毛効果の根拠が高く単独で強く推奨する", "頭皮の脱毛面積を測る唯一の方法である", "全患者に発毛目的で第一選択として実施する", "心理社会的な負担への有用性も一切示唆されていない"], "correct": 0, "explanation": "脱毛症状の改善には根拠が不足しています。心理社会的負担に対しては、低いレベルながら有用性が示されています。"},
+{"id": 96, "pages": "35", "prompt": "CQ24のPRPが指すものはどれか。", "options": ["自己多血小板血漿", "多血小板血清に含まれる単一のサイトカイン", "精製した白血球だけの懸濁液", "血小板を除いた自己血漿", "臍帯由来の間葉系細胞"], "correct": 0, "explanation": "PRPはplatelet rich plasma（自己多血小板血漿）です。CQ24ではAAへの使用を推奨していません。"},
+{"id": 97, "pages": "35", "prompt": "CQ24でPRP療法に付された評価はどれか。", "options": ["推奨度3・エビデンスレベルB", "推奨度1・エビデンスレベルA", "推奨度1・エビデンスレベルC", "推奨度2・エビデンスレベルB", "推奨度3・エビデンスレベルC"], "correct": 0, "explanation": "CQ24のPRP療法は推奨度3（推奨しない）、エビデンスレベルBです。"},
+{"id": 98, "pages": "36", "prompt": "CQ25でかつらの使用をどう勧めているか。", "options": ["使用を希望する患者に勧める", "汎発型の成人にのみ義務付ける", "病勢を悪化させるため全例で避ける", "薬物療法の中止を希望する場合のみ勧める", "QoLへの影響があっても希望は確認しない"], "correct": 0, "explanation": "CQ25は、本人が希望する場合にかつらの使用を勧めています。"},
+{"id": 99, "pages": "36", "prompt": "CQ25で、かつらの使用に期待される利点として挙げられるのはどれか。", "options": ["紫外線や外傷からの保護とQoLの改善", "成長期毛包の免疫寛容の確実な回復", "SALTスコアの直接的な低下", "再発リスクをゼロにすること", "併存する自己免疫疾患の寛解"], "correct": 0, "explanation": "かつらは紫外線や外傷から頭部を保護し、外見上の負担などを軽くしてQoLを改善しうるとされています。"},
+{"id": 100, "pages": "36", "prompt": "CQ25のかつらの使用に付された評価はどれか。", "options": ["推奨度1・エビデンスレベルC", "推奨度1・エビデンスレベルA", "推奨度2・エビデンスレベルB", "推奨度3・エビデンスレベルA", "推奨度3・エビデンスレベルC"], "correct": 0, "explanation": "希望する患者に対するかつらの使用は推奨度1です。エビデンスレベルはCとされています。"}
+]
+</script>
+<script>
+const questionBank = JSON.parse(document.querySelector('#question-bank').textContent);
+const app = document.querySelector('#app');
+const letters = ['A', 'B', 'C', 'D', 'E'];
+const roundSize = 10;
+let round = [];
+let answers = [];
+let current = 0;
+
+function shuffle(items) {
+  const result = [...items];
+  for (let index = result.length - 1; index > 0; index--) {
+    const other = Math.floor(Math.random() * (index + 1));
+    [result[index], result[other]] = [result[other], result[index]];
+  }
+  return result;
+}
+
+function startRound() {
+  round = shuffle(questionBank).slice(0, roundSize).map(question => ({
+    ...question,
+    choices: shuffle(question.options.map((text, index) => ({text, correct: index === question.correct})))
+  }));
+  answers = Array(roundSize).fill(null);
+  current = 0;
+  showQuestion();
+}
+
+function setScreen(markup, focusSelector) {
+  app.innerHTML = markup;
+  window.scrollTo(0, 0);
+  app.querySelector(focusSelector).focus({preventScroll:true});
+}
+
+function showHome() {
+  app.replaceChildren(document.querySelector('#home').content.cloneNode(true));
+  document.querySelector('#start').addEventListener('click', startRound);
+}
+
+function showQuestion() {
+  const question = round[current];
+  const answered = answers.filter(value => value !== null).length;
+  const last = current === roundSize - 1;
+  const choices = question.choices.map(({text}, index) =>
+    `<label class="choice"><input type="radio" name="answer" value="${index}" ${answers[current] === index ? 'checked' : ''} required><span class="letter" aria-hidden="true">${letters[index]}</span><span>${text}</span></label>`
+  ).join('');
+  setScreen(`<section class="card" aria-label="クイズ">
+    <div class="progress-info"><strong>第 ${current + 1} 問 / ${roundSize} 問</strong><span id="answered" aria-live="polite">回答済み ${answered} / ${roundSize}</span></div>
+    <progress aria-label="回答済みの問題数" value="${answered}" max="${roundSize}"></progress>
+    <form>
+      <fieldset><legend tabindex="-1">${question.prompt}</legend>${choices}</fieldset>
+      <div class="actions"><button type="button" class="secondary" id="back" ${current === 0 ? 'disabled' : ''}>← 前の問題</button>
+      <button type="submit" id="next" ${answers[current] === null ? 'disabled' : ''}>${last ? '採点する' : '次の問題 →'}</button></div>
+    </form>
+  </section>`, 'legend');
+
+  const form = app.querySelector('form');
+  form.addEventListener('change', event => {
+    answers[current] = Number(event.target.value);
+    const count = answers.filter(value => value !== null).length;
+    app.querySelector('#answered').textContent = `回答済み ${count} / ${roundSize}`;
+    app.querySelector('progress').value = count;
+    app.querySelector('#next').disabled = false;
+  });
+  app.querySelector('#back').addEventListener('click', () => {
+    current--;
+    showQuestion();
+  });
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (answers[current] === null) return;
+    if (last) {
+      showResults();
+    } else {
+      current++;
+      showQuestion();
+    }
+  });
+}
+
+function showResults() {
+  const score = round.filter((question, index) => question.choices[answers[index]].correct).length;
+  const reviews = round.map((question, index) => {
+    const selected = question.choices[answers[index]];
+    const correct = question.choices.find(choice => choice.correct);
+    const pages = question.pages.replace('-', '–');
+    return `<details ${selected.correct ? '' : 'open'}>
+      <summary><span class="verdict ${selected.correct ? '' : 'incorrect'}">${selected.correct ? '正解' : '不正解'}</span>第${index + 1}問　${question.prompt}</summary>
+      <div class="detail-body">
+        <p><strong>あなたの回答</strong>　${selected.text}</p>
+        <p><strong>正答</strong>　${correct.text}</p>
+        <p>${question.explanation}</p>
+        <a class="source" href="../guideline.pdf#page=${question.pages.split('-')[0]}" target="_blank" rel="noopener">出典PDF ${pages}ページ目 ↗</a>
+      </div>
+    </details>`;
+  }).join('');
+  setScreen(`<section class="card" aria-labelledby="result-title">
+      <p class="eyebrow">採点結果</p>
+      <h1 id="result-title" tabindex="-1">正答率</h1>
+      <p class="score">${score * 100 / roundSize}<span>%</span></p>
+      <p>${roundSize}問中 ${score}問正解</p>
+      <div class="result-actions"><button id="retry">新しい10問に挑戦 →</button><button class="secondary" id="toggle" aria-expanded="false" aria-controls="reviews">すべての解説を開く</button></div>
+    </section>
+    <section aria-labelledby="review-title">
+      <div class="review-heading"><h2 id="review-title">問題の振り返り</h2></div>
+      <div id="reviews">${reviews}</div>
+    </section>`, '#result-title');
+  app.querySelector('#retry').addEventListener('click', startRound);
+  const toggle = app.querySelector('#toggle');
+  const details = [...app.querySelectorAll('details')];
+  function updateToggle() {
+    const open = details.every(detail => detail.open);
+    toggle.textContent = open ? 'すべての解説を閉じる' : 'すべての解説を開く';
+    toggle.setAttribute('aria-expanded', String(open));
+  }
+  toggle.addEventListener('click', () => {
+    const open = !details.every(detail => detail.open);
+    details.forEach(detail => { detail.open = open; });
+    updateToggle();
+  });
+  details.forEach(detail => detail.addEventListener('toggle', updateToggle));
+  updateToggle();
+}
+
+showHome();
+</script>
+</body>
+</html>
